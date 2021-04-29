@@ -8,20 +8,20 @@ import requests
 import http.client
 
 
-CALENDAR_BY_DIST_URL  = 'https://cdn-api.co-vin.in/api/v2/appointment/sessions/calendarByDistrict?state_id=' #571&date=04-05-2021
+CALENDAR_BY_DIST_URL  = 'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?state_id=' #571&date=04-05-2021
 TARGET_DATE = datetime.date(2021, 5, 2)
 
 START_DATE = datetime.date(2021, 4, 29)
 END_DATE  = datetime.date(2021, 5, 22)
 
 def saveResponse(name, json_data):
-    with open(name + '.json', 'w') as json_file:
+    with open('./data/' + name + '.json', 'w') as json_file:
         json.dump(json_data, json_file)
 
 
 def main():
     logging.info('====Start CoWIN Availability====')
-    with open('districts.json') as json_file:
+    with open('./data/districts.json') as json_file:
         districts = json.load(json_file)
 
     summaries = []
